@@ -245,6 +245,7 @@ echo $GITHUB_USER
 ## 🔥 Bootstrap Flux
 Once the cluster is ready, bootstrap Flux with your fleet repo
 ```bash
+#Create a new blank repostitory called flux-k8s-fleet-lab in Github then you can bootstrap with Flux
 #Then, you need to bootstrap flux with your github project.
 flux bootstrap github --owner=$GITHUB_USER --repository=flux-k8s-fleet-lab --branch=main --path=./clusters/dev --personal --log-level=debug --network-policy=false --components-extra=image-reflector-controller,image-automation-controller
 ```
