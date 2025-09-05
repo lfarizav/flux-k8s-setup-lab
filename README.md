@@ -33,7 +33,7 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
    - [Install Kubectl](#install-kubectl)
    - [Install Helm](#install-helm)
    - [Install FluxCD](#install-fluxcd)
-4. [Create Kind Cluster](#-create-kind-cluster)  
+4. [Create Kind Cluster](#create-kind-cluster)  
 5. [Install Multus](#-install-multus)  
 6. [Bootstrap Flux](#-bootstrap-flux)  
 7. [Repo Structure](#-repo-structure)  
