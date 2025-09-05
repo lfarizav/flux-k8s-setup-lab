@@ -64,6 +64,10 @@ Skip the next command if you already have that ability or if you want to enter a
 ```bash
 echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER >/dev/null
 ```
+Optionally, you can use the sudo visdo and add the line $USER ALL=(ALL) NOPASSWD: ALL
+```bash
+sudo visudo
+```
 ## ✅ Prerequisites
 
 - Ubuntu 24.04 (Intel architecture).  
