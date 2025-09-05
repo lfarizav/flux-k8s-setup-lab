@@ -53,7 +53,7 @@ We will:
 - Deploy applications in **isolated tenant namespaces**.  
 
 ---
-## Install Requirements
+## ✅ Install Requirements
 
 ### When using Ubuntu
 
@@ -187,7 +187,7 @@ kind create cluster --config kind-two-nodes-cluster.yaml --name dev
 kubectl get nodes -owide
 ```
 ---
-## Create kubectl alias k and bash completion
+## ⚙️ Create kubectl alias k and bash completion
 As an optional step, add the completion executing the next snippets
 
 ```bash
