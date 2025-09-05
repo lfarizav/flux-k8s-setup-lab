@@ -228,9 +228,14 @@ tar -xzf cni-plugins-linux-amd64-v1.7.1.tgz -C /opt/cni/bin && rm cni-plugins-li
 ## 🔥 Bootstrap Flux
 Once the cluster is ready, bootstrap Flux with your fleet repo:
 ```bash
-flux bootstrap github   --owner=<your-github-username>   --repository=flux-k8s-fleet-lab   --branch=main   --path=clusters/cluster01
+flux check --pre
+flux check
+#After installing fluxcd is important to set GITHUB_TOKEN and GITHUB_USER environment variables. The following are the env for helm_open5gs github repository
+GITHUB_TOKEN=<github-token>
+GITHUB_USER=lfarizav
+#Then, you need to bootstrap flux with your github project.
+flux bootstrap github   --owner=$GITHUB_USER   --repository=open5gs   --branch=main   --path=./clusters/dev   --personal   --token-auth --log-level=debug --network-policy=false 
 ```
-
 ---
 
 ## 🗂 Repo Structure
