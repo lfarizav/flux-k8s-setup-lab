@@ -187,10 +187,19 @@ kubectl get nodes -owide
 ```
 ---
 ## Create kubectl alias k and bash completion
+As an optional step, add the completion executing the next snippets
+
 ```bash
-echo 'alias ks=kubectl' >>~/.bashrc
-kubectl 
----
+source <(kubectl completion bash)
+kubectl completion bash > $HOME/.kubectl.completion.bash.inc
+printf "
+# kubectl shell completion
+source '$HOME/.kubectl.completion.bash.inc'
+# setting up aliases
+alias k='kubectl'
+" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
 ---
 ## 🌐 Install Multus
 Multus adds support for multiple network interfaces per pod.
