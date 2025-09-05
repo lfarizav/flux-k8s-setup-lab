@@ -70,8 +70,8 @@ sudo visudo
 ```
 ## ✅ Prerequisites
 
-- Ubuntu 24.04 (Intel architecture).  
-- 2 CPUs, 4 GB RAM (minimum).  
+- Ubuntu 22.04 (Intel architecture).  
+- 4 CPUs, 8 GB RAM (minimum).  
 - GitHub account with 3 repositories:
   - `flux-k8s-code-lab` → Application source code.  
   - `flux-k8s-deploy-lab` → Tenant deployment configs.  
@@ -87,25 +87,32 @@ which is the base where the whole environment has been tested, ensure you have t
 ```bash
 sudo apt update
 sudo apt upgrade
-sudo apt -y install openssh-server
 sudo apt -y install curl
 sudo apt -y install git
-sudo apt -y install docker.io
+sudo apt -y install net-tools
 ```
 ## 🛠 Install Tools
-
+The best practice is to go to https://docs.docker.com/engine/install/ubuntu/ and follow the steps. The following are the steps that works in 4/9/2025.
 ### Docker
 ```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y ca-certificates curl gnupg lsb-release apt-transport-https software-properties-common
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl enable docker --now
-```
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+Install docker packages
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 Add user to Docker group:
 ```bash
 sudo usermod -aG docker $USER
