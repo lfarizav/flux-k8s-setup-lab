@@ -198,8 +198,29 @@ echo 'complete -F __start_kubectl ks' >>~/.bashrc
 ## 🌐 Install Multus
 Multus adds support for multiple network interfaces per pod.
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset-thick.yml
-kubectl -n kube-system get pods | grep multus
+# Apply Multus
+kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset.yml
+# Control-plane bridge configuration
+docker exec dev-control-plane ip link add br-net1 type bridge || true
+docker exec dev-control-plane ip addr add 192.168.1.1/24 dev br-net1 || true
+docker exec dev-control-plane ip link set br-net1 up
+docker exec dev-control-plane sysctl -w net.ipv4.ip_forward=1
+docker exec dev-control-plane iptables -t nat -A POSTROUTING -s 192.168.1.0/24 ! -o br-net1 -j MASQUERADE
+
+# Download and install CNI plugins in control-plane
+docker exec dev-control-plane sh -c "curl -LO https://github.com/containernetworking/plugins/releases/download/v1.7.1/cni-plugins-linux-amd64-v1.7.1.tgz && \
+tar -xzf cni-plugins-linux-amd64-v1.7.1.tgz -C /opt/cni/bin && rm cni-plugins-linux-amd64-v1.7.1.tgz"
+
+# Worker bridge configuration
+docker exec dev-worker ip link add br-net1 type bridge || true
+docker exec dev-worker ip addr add 192.168.1.1/24 dev br-net1 || true
+docker exec dev-worker ip link set br-net1 up
+docker exec dev-worker sysctl -w net.ipv4.ip_forward=1
+docker exec dev-worker iptables -t nat -A POSTROUTING -s 192.168.1.0/24 ! -o br-net1 -j MASQUERADE
+
+# Download and install CNI plugins in worker
+docker exec dev-worker sh -c "curl -LO https://github.com/containernetworking/plugins/releases/download/v1.7.1/cni-plugins-linux-amd64-v1.7.1.tgz && \
+tar -xzf cni-plugins-linux-amd64-v1.7.1.tgz -C /opt/cni/bin && rm cni-plugins-linux-amd64-v1.7.1.tgz"
 ```
 
 ---
