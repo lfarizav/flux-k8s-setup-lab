@@ -143,11 +143,7 @@ To install kind you can use the next code snippet:
 [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
-```
-or use the [helper](kind/get-kind.sh) in the kind folder
-
-```bash
-kind/get-kind.sh
+kind version
 ```
 
 and select a proper version.
