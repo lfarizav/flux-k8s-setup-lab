@@ -191,15 +191,8 @@ kubectl get nodes -owide
 As an optional step, add the completion executing the next snippets
 
 ```bash
-source <(kubectl completion bash)
-kubectl completion bash > $HOME/.kubectl.completion.bash.inc
-printf "
-# kubectl shell completion
-source '$HOME/.kubectl.completion.bash.inc'
-# setting up aliases
-alias k='kubectl'
-" >> $HOME/.bashrc
-source $HOME/.bashrc
+echo 'alias ks=kubectl' >>~/.bashrc
+echo 'complete -F __start_kubectl ks' >>~/.bashrc
 ```
 ---
 ## 🌐 Install Multus
