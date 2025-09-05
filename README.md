@@ -234,8 +234,8 @@ tar -xzf cni-plugins-linux-amd64-v1.7.1.tgz -C /opt/cni/bin && rm cni-plugins-li
 flux check --pre
 flux check
 #After installing fluxcd is important to set GITHUB_TOKEN and GITHUB_USER environment variables. The following are the env for helm_open5gs github repository
-GITHUB_TOKEN=<github-token>
-GITHUB_USER=<github-user>
+export GITHUB_TOKEN=<github-token>
+export GITHUB_USER=<github-user>
 ```
 ---
 
