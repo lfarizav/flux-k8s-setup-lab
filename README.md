@@ -242,10 +242,17 @@ echo $GITHUB_USER
 ---
 
 ## 🔥 Bootstrap Flux
-Once the cluster is ready, bootstrap Flux with your fleet repo:
+Once the cluster is ready, bootstrap Flux with your fleet repo
 ```bash
 #Then, you need to bootstrap flux with your github project.
 flux bootstrap github --owner=$GITHUB_USER --repository=flux-k8s-fleet-lab --branch=main --path=./clusters/dev --personal --log-level=debug --network-policy=false --components-extra=image-reflector-controller,image-automation-controller
+```
+---
+## 🔥 Bootstrap Flux
+Try after bootstraping task is completed, the new namespace called flux-system and all pods must be running. If k is not recognized, you need to check the alias kubectl=k
+```bash
+k get ns
+k get all -n flux-system
 ```
 ---
 
