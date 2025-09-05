@@ -127,7 +127,8 @@ reboot
 Ensure you have the following tools installed on your computer.
 
 - kind: version v0.30.0 or later
-- kubectl: version 1.27 or later
+- kubectl: version v1.34.0 or later
+- Kustomize: Version: v5.7.1 or later
 - helm: version 3.14.0 or later
 
 ### Installation
