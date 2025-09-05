@@ -191,7 +191,7 @@ kind create cluster --config kind-two-nodes-cluster.yaml --name dev
 kubectl get nodes -owide
 ```
 ---
-## ⚙️ Create kubectl alias k and bash completion
+## ⚙️ Alias bash completion
 
 As an optional step, add the completion executing the next snippets
 
