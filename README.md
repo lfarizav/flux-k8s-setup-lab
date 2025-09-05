@@ -33,12 +33,13 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
    - [Install Kubectl](#install-kubectl)
    - [Install Helm](#install-helm)
    - [Install FluxCD](#install-fluxcd)
-4. [Create Kind Cluster](#create-kind-cluster)  
-5. [Install Multus](#-install-multus)  
-6. [Bootstrap Flux](#-bootstrap-flux)  
-7. [Repo Structure](#-repo-structure)  
-8. [First Tenant Deployment](#-first-tenant-deployment)  
-9. [Next Steps](#-next-steps)
+4. [Create Kind Cluster](#create-kind-cluster)
+5. [Create kubectl alias k and bash completion](#create-kubectl-alias-k-and-bash-completion)
+6. [Install Multus](#-install-multus)  
+7. [Bootstrap Flux](#-bootstrap-flux)  
+8. [Repo Structure](#-repo-structure)  
+9. [First Tenant Deployment](#-first-tenant-deployment)  
+10. [Next Steps](#-next-steps)
 
 ---
 
@@ -182,6 +183,7 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 ---
 
 ## ⚙️ Create Kind Cluster
+
 ```bash
 git clone https://github.com/lfarizav/flux-k8s-setup-lab.git
 cd flux-k8s-setup-lab
@@ -190,6 +192,7 @@ kubectl get nodes -owide
 ```
 ---
 ## ⚙️ Create kubectl alias k and bash completion
+
 As an optional step, add the completion executing the next snippets
 
 ```bash
@@ -198,6 +201,7 @@ echo 'complete -F __start_kubectl ks' >>~/.bashrc
 ```
 ---
 ## 🌐 Install Multus
+
 Multus adds support for multiple network interfaces per pod.
 ```bash
 # Apply Multus
