@@ -53,7 +53,17 @@ We will:
 - Deploy applications in **isolated tenant namespaces**.  
 
 ---
+## Install Requirements
 
+### When using Ubuntu
+
+#### Setup sudo with no password or your current user (optional)
+
+Skip the next command if you already have that ability or if you want to enter a password each time you open a new terminal session for the current user.
+
+```bash
+echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USER >/dev/null
+```
 ## ✅ Prerequisites
 
 - Ubuntu 24.04 (Intel architecture).  
