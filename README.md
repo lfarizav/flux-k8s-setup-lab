@@ -251,7 +251,7 @@ flux bootstrap github --owner=$GITHUB_USER --repository=flux-k8s-fleet-lab --bra
 #Bootstrapping creates a gitrepository and a kustomization to check them use the following command
 flux get all -A
 #Once the fleet repository is bootstrapped you will find a new push made by flux in your new repository, a new directory clusters/dev/flux-system and a deploy key
-#Only creates 1 bootstrap with Flux then if you want 1 cluster with different environments or projects
+#Only creates 1 bootstrap with Flux then if you want 1 cluster with different environments or projects using namespaces and give freedom to developers
 ```
 ---
 ## 🔥 Check Flux Resources
