@@ -151,6 +151,9 @@ It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#i
 go the the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 
