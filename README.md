@@ -136,7 +136,7 @@ Ensure you have the following tools installed on your computer.
 
 The whole setup will be operational executing the next steps.
 
-#### Install Kind
+### Install Kind
 
 To install kind you can use the next code snippet:
 
@@ -149,7 +149,7 @@ kind version
 ```
 It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#installation to see updated steps.
 ---
-### kubectl
+### Install kubectl
 Go to the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -159,7 +159,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 ---
-### Helm
+### Install Helm
 Go to the webpage https://helm.sh/docs/intro/install/ and follow the steps
 ```bash
 sudo apt-get install curl gpg apt-transport-https --yes
@@ -170,7 +170,7 @@ sudo apt-get install helm
 helm version
 ```
 ---
-### FluxCD
+### Install FluxCD
 
 Go to the webpage https://fluxcd.io/flux/installation/ and follow the steps
 ```bash
