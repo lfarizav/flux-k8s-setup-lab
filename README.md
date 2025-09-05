@@ -145,15 +145,12 @@ chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 kind version
 ```
-
-and select a proper version.
-For this tutorial the selected one is the 0.23.0, corresponding to kubernetes 1.30.
+It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#installation to see updated steps.
 
 ### kubectl
+go the the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
-curl -LO "https://dl.k8s.io/release/$(curl -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x kubectl
-sudo mv kubectl /usr/local/bin/
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 kubectl version --client
 ```
 
