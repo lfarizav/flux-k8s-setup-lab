@@ -28,7 +28,7 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
 1. [Introduction](#-introduction)  
 2. [Prerequisites](#-prerequisites)  
 3. [Install Tools](#-install-tools)  
-   - [Install Docker](#-install-docker)  
+   - [Install Docker](#install-docker)  
    - [Install Kind](#-kind)
    - [Install Kubectl](#-kubectl)
    - [Install Helm](#-helm)
