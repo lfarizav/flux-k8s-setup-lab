@@ -129,7 +129,7 @@ Ensure you have the following tools installed on your computer.
 - kind: version v0.30.0 or later
 - kubectl: version v1.34.0 or later
 - Kustomize: Version: v5.7.1 or later
-- helm: version 3.14.0 or later
+- helm: version v3.18.6 or later
 
 ### Installation
 
@@ -165,6 +165,7 @@ curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --
 echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.com/helm-linux/helm-debian/any/ any main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 sudo apt-get update
 sudo apt-get install helm
+helm version
 ```
 ---
 
