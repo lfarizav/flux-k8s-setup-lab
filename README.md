@@ -126,7 +126,7 @@ reboot
 
 Ensure you have the following tools installed on your computer.
 
-- kind: version 0.23.0 or later
+- kind: version v0.30.0 or later
 - kubectl: version 1.27 or later
 - helm: version 3.14.0 or later
 
