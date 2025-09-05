@@ -182,7 +182,7 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 ```
 ---
 
-## Kind cluster
+## Create kind cluster
 
 ```bash
 git clone https://github.com/lfarizav/flux-k8s-setup-lab.git
