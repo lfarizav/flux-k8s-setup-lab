@@ -78,7 +78,20 @@ sudo visudo
   - `flux-k8s-fleet-lab` → Fleet/platform configurations.  
 
 ---
+#### Ensure Packages
 
+Ensure you are up-to-date with all the required packages.
+If you are using ubuntu as host operating system to run the lab,
+which is the base where the whole environment has been tested, ensure you have the following packages installed:
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt -y install openssh-server
+sudo apt -y install curl
+sudo apt -y install git
+sudo apt -y install docker.io
+```
 ## 🛠 Install Tools
 
 ### Docker
