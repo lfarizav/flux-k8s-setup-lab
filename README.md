@@ -118,11 +118,42 @@ Add user to Docker group:
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-Reboot
+And reboot
 ```bash
 reboot
 ```
----
+### Prerequisites
+
+Ensure you have the following tools installed on your computer.
+
+- kind: version 0.23.0 or later
+- kubectl: version 1.27 or later
+- helm: version 3.14.0 or later
+
+### Installation
+
+The whole setup will be operational executing the next steps.
+
+#### Install Kind
+
+To install kind you can use the next code snippet:
+
+```bash
+# For AMD64 / x86_64
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+# For ARM64
+[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-arm64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+```
+or use the [helper](kind/get-kind.sh) in the kind folder
+
+```bash
+kind/get-kind.sh
+```
+
+and select a proper version.
+For this tutorial the selected one is the 0.23.0, corresponding to kubernetes 1.30.
 
 ### kubectl
 ```bash
