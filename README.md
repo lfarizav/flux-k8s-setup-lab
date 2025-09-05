@@ -28,11 +28,12 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
 1. [Introduction](#-introduction)  
 2. [Prerequisites](#-prerequisites)  
 3. [Install Tools](#-install-tools)  
-   - [Install docker](#docker)  
-   - [Install kubectl](#kubectl)  
-   - [Install kind](#kind)  
-   - [Installl multus CNI](#multus-cni)  
-   - [Install FluxCD CLI](#fluxcd-cli)  
+   - [Install Docker](#docker)  
+   - [Install Kind](#kind)
+   - [Install Kubectl](#kubectl)
+   - [Install Helm](#helm)
+   - [Install FluxCD](#fluxcd)
+   - [Installl Multus CNI](#multus-cni)  
 4. [Create Kind Cluster](#-create-kind-cluster)  
 5. [Install Multus](#-install-multus)  
 6. [Bootstrap Flux](#-bootstrap-flux)  
@@ -94,7 +95,8 @@ sudo apt -y install bash-completion
 ```
 ## 🛠 Install Tools
 The best practice is to go to https://docs.docker.com/engine/install/ubuntu/ and follow the steps. The following are the steps that works in 4/9/2025.
-### Docker
+
+### Install Docker
 ```bash
 # Add Docker's official GPG key:
 sudo apt-get update
@@ -150,7 +152,7 @@ kind version
 ```
 It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#installation to see updated steps.
 ---
-### Install kubectl
+### Install Kubectl
 Go to the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
