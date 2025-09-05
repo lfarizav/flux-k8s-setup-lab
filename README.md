@@ -130,7 +130,7 @@ Ensure you have the following tools installed on your computer.
 - kubectl: version v1.34.0 or later
 - Kustomize: Version: v5.7.1 or later
 - helm: version v3.18.6 or later
-- FluxCD: version  or later
+- FluxCD: version v2.6.4 or later
 
 ### Installation
 
@@ -148,7 +148,7 @@ sudo mv ./kind /usr/local/bin/kind
 kind version
 ```
 It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#installation to see updated steps.
-
+---
 ### kubectl
 Go to the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
@@ -158,6 +158,7 @@ echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
+---
 ### Helm
 Go to the webpage https://helm.sh/docs/intro/install/ and follow the steps
 ```bash
@@ -168,28 +169,13 @@ sudo apt-get update
 sudo apt-get install helm
 helm version
 ```
-### Helm
+---
+### FluxCD
 
 Go to the webpage https://fluxcd.io/flux/installation/ and follow the steps
 ```bash
 curl -s https://fluxcd.io/install.sh | sudo bash
 ```
----
-
-### Multus CNI
-```bash
-kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus-cni/master/deployments/multus-daemonset-thick.yml
-kubectl -n kube-system get pods | grep multus
-```
-
----
-
-### FluxCD CLI
-```bash
-curl -s https://fluxcd.io/install.sh | sudo bash
-flux --version
-```
-
 ---
 
 ## ⚙️ Create Kind Cluster
