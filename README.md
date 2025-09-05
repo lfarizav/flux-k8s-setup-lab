@@ -68,6 +68,7 @@ Optionally, you can use the sudo visdo and add the line $USER ALL=(ALL) NOPASSWD
 ```bash
 sudo visudo
 ```
+---
 ## ✅ Prerequisites
 
 - Ubuntu 22.04 (Intel architecture).  
