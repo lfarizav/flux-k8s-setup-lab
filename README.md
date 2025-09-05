@@ -130,6 +130,7 @@ Ensure you have the following tools installed on your computer.
 - kubectl: version v1.34.0 or later
 - Kustomize: Version: v5.7.1 or later
 - helm: version v3.18.6 or later
+- FluxCD: version  or later
 
 ### Installation
 
@@ -149,7 +150,7 @@ kind version
 It is recommended always go to https://kind.sigs.k8s.io/docs/user/quick-start/#installation to see updated steps.
 
 ### kubectl
-Go the the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
+Go to the webpage https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ and follow the steps
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
@@ -158,7 +159,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client
 ```
 ### Helm
-Go the the webpage https://helm.sh/docs/intro/install/ and follow the steps
+Go to the webpage https://helm.sh/docs/intro/install/ and follow the steps
 ```bash
 sudo apt-get install curl gpg apt-transport-https --yes
 curl -fsSL https://packages.buildkite.com/helm-linux/helm-debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -166,6 +167,12 @@ echo "deb [signed-by=/usr/share/keyrings/helm.gpg] https://packages.buildkite.co
 sudo apt-get update
 sudo apt-get install helm
 helm version
+```
+### Helm
+
+Go to the webpage https://fluxcd.io/flux/installation/ and follow the steps
+```bash
+curl -s https://fluxcd.io/install.sh | sudo bash
 ```
 ---
 
