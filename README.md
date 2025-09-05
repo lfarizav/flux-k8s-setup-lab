@@ -90,6 +90,7 @@ sudo apt upgrade
 sudo apt -y install curl
 sudo apt -y install git
 sudo apt -y install net-tools
+sudo apt -y install bash-completion
 ```
 ## 🛠 Install Tools
 The best practice is to go to https://docs.docker.com/engine/install/ubuntu/ and follow the steps. The following are the steps that works in 4/9/2025.
