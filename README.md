@@ -118,7 +118,10 @@ Add user to Docker group:
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-
+Reboot
+```bash
+reboot
+```
 ---
 
 ### kubectl
