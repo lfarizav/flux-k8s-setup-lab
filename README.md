@@ -180,6 +180,8 @@ curl -s https://fluxcd.io/install.sh | sudo bash
 
 ## ⚙️ Create Kind Cluster
 ```bash
+git clone 
+kind create cluster --config kind-two-nodes-cluster.yaml --name dev
 kind create cluster --name flux-lab
 kubectl cluster-info --context kind-flux-lab
 ```
