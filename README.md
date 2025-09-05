@@ -185,9 +185,13 @@ cd flux-k8s-setup-lab
 kind create cluster --config kind-two-nodes-cluster.yaml --name dev
 kubectl get nodes -owide
 ```
-
 ---
-
+## Create kubectl alias k and bash completion
+```bash
+echo 'alias ks=kubectl' >>~/.bashrc
+kubectl 
+---
+---
 ## 🌐 Install Multus
 Multus adds support for multiple network interfaces per pod.
 ```bash
