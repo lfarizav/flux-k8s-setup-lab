@@ -36,10 +36,11 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
 4. [Create kind cluster](#create-kind-cluster)
 5. [Alias bash completion](#alias-bash-completion)
 6. [Install Multus](#-install-multus)  
-7. [Bootstrap Flux](#-bootstrap-flux)  
-8. [Repo Structure](#-repo-structure)  
-9. [First Tenant Deployment](#-first-tenant-deployment)  
-10. [Next Steps](#-next-steps)
+7. [Bootstrap Flux](#-bootstrap-flux)
+8. [Check Flux resources](#-check-flux-resources)
+9. [Repo Structure](#-repo-structure)  
+10. [First Tenant Deployment](#-first-tenant-deployment)  
+11. [Next Steps](#-next-steps)
 
 ---
 
@@ -248,7 +249,7 @@ Once the cluster is ready, bootstrap Flux with your fleet repo
 flux bootstrap github --owner=$GITHUB_USER --repository=flux-k8s-fleet-lab --branch=main --path=./clusters/dev --personal --log-level=debug --network-policy=false --components-extra=image-reflector-controller,image-automation-controller
 ```
 ---
-## 🔥 Bootstrap Flux
+## 🔥 Check Flux Resources
 Try after bootstraping task is completed, the new namespace called flux-system and all pods must be running. If k is not recognized, you need to check the alias kubectl=k
 ```bash
 k get ns
