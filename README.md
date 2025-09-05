@@ -48,7 +48,7 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
 
 This lab demonstrates how to use [FluxCD](https://fluxcd.io) for **multi-tenant GitOps** on Kubernetes.  
 We will:  
-- Install core tools (Docker, Kind, kubectl, FluxCD).  
+- Install core tools (Docker, Kind, helm, kustomize, kubectl, Multus, and FluxCD).  
 - Create a Kubernetes cluster.  
 - Enable multi-networking with Multus CNI.  
 - Bootstrap FluxCD with Git repositories.  
