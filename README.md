@@ -7,7 +7,7 @@
       </a>
     </td>
     <td style="border-collapse: collapse; border: none; vertical-align: center;">
-      <b><font size = "5">Docker compose to Helm migration to deploy a 4G private cellular netwwork</font></b>
+      <b><font size = "5">FluxCD + Kubernetes Multitenancy Lab</font></b>
     </td>
   </tr>
 </table>
@@ -16,7 +16,7 @@
 **Luis Felipe Ariza Vesga** 
 emails: lfarizav@gmail.com, lfarizav@unal.edu.co
 
-# 🚀 FluxCD + Kubernetes Multitenancy Lab
+# 🚀 Description
 
 This repository contains step-by-step instructions to set up a **FluxCD GitOps environment** on a local **Kubernetes cluster using Kind**.  
 The lab is designed for teaching **multitenancy**, where each team (tenant) has its own namespace, RBAC rules, and GitOps configuration.
