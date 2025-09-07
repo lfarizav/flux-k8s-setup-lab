@@ -272,8 +272,16 @@ k get all -n flux-system
 
 ---
 
-## 👩‍💻 First Tenant Deployment
-
+## 👩‍💻 Create a tenant
+This laboratory has two tenants. They are called facebooc and instavote. 
+```bash
+flux create tenant facebooc --with-namespace=facebooc 
+flux create tenant instavote --with-namespace=instavote
+```
+However, if you need to add a new one to dev cluster just use flux as follows:
+```bash
+flux create tenant <new-tenant-name> --with-namespace=<new-tenant-name>
+```
 1. Create a namespace for **team-a**.  
 2. Add a `Kustomization` in `flux-k8s-deploy-lab/tenants/team-a/`.  
 3. Flux will reconcile and deploy the app automatically.  
