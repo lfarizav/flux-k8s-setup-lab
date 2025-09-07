@@ -39,7 +39,7 @@ The lab is designed for teaching **multitenancy**, where each team (tenant) has 
 7. [Bootstrap Flux](#-bootstrap-flux)
 8. [Check Flux resources](#-check-flux-resources)
 9. [Repo Structure](#-repo-structure)  
-10. [First Tenant Deployment](#-first-tenant-deployment)  
+10. [Create a tenant](#-create-a-tenant)  
 11. [Next Steps](#-next-steps)
 
 ---
