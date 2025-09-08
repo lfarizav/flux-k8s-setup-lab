@@ -279,12 +279,20 @@ flux create tenant facebooc --with-namespace=facebooc --export > flux-k8s-fleet-
 flux create tenant instavote --with-namespace=instavote  --export > flux-k8s-fleet-lab/projects/base/instavote/rbac.yaml
 ```
 However, if you need to add a new one to dev cluster just use flux as follows:
+1. Create a new tenant
 ```bash
 flux create tenant <new-tenant-name> --with-namespace=<new-tenant-name> --export > flux-k8s-fleet-lab/projects/base/<new-tenant-name>/rbac.yaml
 ```
-1. Create a namespace for **team-a**.  
-2. Add a `Kustomization` in `flux-k8s-deploy-lab/tenants/team-a/`.  
-3. Flux will reconcile and deploy the app automatically.  
+2. Add a source tip git for the new repository
+```bash
+flux create source git <new-tenant-name>-deploy \
+--namespace=<new-tenant-name> \
+--url=https://github.com/dopsdemo/<new-tenant-name>-deploy \
+--branch=main \
+--export >
+./projects/base/instavote/<new-tenant-name>-deploy-gitrepository.yaml
+```
+4. Flux will reconcile and deploy the app automatically.  
 
 ---
 
