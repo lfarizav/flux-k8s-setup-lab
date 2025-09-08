@@ -328,3 +328,57 @@ EOF
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
 ---
+## Results
+At the end, you will the applications inside facebooc and instavote namespaces as follows:
+```bash
+luis@lfarizav:~/flux-k8s-deploy-lab$ k get ns
+NAME                 STATUS   AGE
+default              Active   2d
+facebooc             Active   18m
+flux-system          Active   18m
+instavote            Active   18m
+kube-node-lease      Active   2d
+kube-public          Active   2d
+kube-system          Active   2d
+local-path-storage   Active   2d
+luis@lfarizav:~/flux-k8s-deploy-lab$ k get all -n instavote
+NAME                                     READY   STATUS    RESTARTS   AGE
+pod/instavote-db-postgres-0              1/1     Running   0          18m
+pod/instavote-result-f9b57c5cf-wlcwq     1/1     Running   0          18m
+pod/redis-85b9d4ffb8-c5sgg               1/1     Running   0          18m
+pod/vote-8fc66c9f9-nc27z                 1/1     Running   0          18m
+pod/worker-deployment-6d5dc55fbb-b7m4n   1/1     Running   0          18m
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/db                 ClusterIP   10.96.62.100    <none>        5432/TCP       18m
+service/instavote-result   NodePort    10.96.137.200   <none>        80:30804/TCP   18m
+service/redis              ClusterIP   10.96.36.33     <none>        6379/TCP       18m
+service/vote               NodePort    10.96.23.29     <none>        80:30200/TCP   18m
+
+NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/instavote-result    1/1     1            1           18m
+deployment.apps/redis               1/1     1            1           18m
+deployment.apps/vote                1/1     1            1           18m
+deployment.apps/worker-deployment   1/1     1            1           18m
+
+NAME                                           DESIRED   CURRENT   READY   AGE
+replicaset.apps/instavote-result-f9b57c5cf     1         1         1       18m
+replicaset.apps/redis-85b9d4ffb8               1         1         1       18m
+replicaset.apps/vote-8fc66c9f9                 1         1         1       18m
+replicaset.apps/worker-deployment-6d5dc55fbb   1         1         1       18m
+
+NAME                                     READY   AGE
+statefulset.apps/instavote-db-postgres   1/1     18m
+luis@lfarizav:~/flux-k8s-deploy-lab$ k get all -n facebooc
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/facebooc-648478b86d-vnnlf   1/1     Running   0          18m
+
+NAME               TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)           AGE
+service/facebooc   NodePort   10.96.150.142   <none>        16000:32134/TCP   18m
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/facebooc   1/1     1            1           18m
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/facebooc-648478b86d   1         1         1       18m
+```
