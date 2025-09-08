@@ -314,9 +314,10 @@ cat << EOF tee ./projects/dev/<new-tenant-name>/<new-tenant-name>-deploy-kustomi
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-name: <new-tenant-name>-deploy
+  name: <new-tenant-name>-deploy
+  namespace: <new-tenant-name>
 spec:
-path: ./flux/dev
+  path: ./flux/dev
 EOF
 ```
 ---
