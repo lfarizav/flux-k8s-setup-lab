@@ -342,7 +342,7 @@ To configure alerts using Slack we need to follow these steps:
 ---
 ### Create an Incoming Webhook for Slack
 ```bash
-
+If you do have the appropriate access, create a new channel or use an existing one and browse to the configuration on the top right corner of the channel. Go to Slack marketplace and search for Incomming Webhooks. Then hit the button "add to slack". Then in "Post to Channel" select the channel you are already created. Finally, hit the button "Add Incoming Webhooks Integration" to get the url.
 ```
 ### Create a secret for slack's incomming webhook url
 ```bash
@@ -368,7 +368,7 @@ To configure alerts using Slack we need to follow these steps:
 ## Results
 At the end, you will the applications inside facebooc and instavote namespaces as follows:
 ```bash
-luis@lfarizav:~/flux-k8s-deploy-lab$ k get ns
+luis@lfarizav:~/facebooc-deploy$ k get ns
 NAME                 STATUS   AGE
 default              Active   2d
 facebooc             Active   18m
@@ -378,7 +378,7 @@ kube-node-lease      Active   2d
 kube-public          Active   2d
 kube-system          Active   2d
 local-path-storage   Active   2d
-luis@lfarizav:~/flux-k8s-deploy-lab$ k get all -n instavote
+luis@lfarizav:~/facebooc-deploy$ k get all -n instavote
 NAME                                     READY   STATUS    RESTARTS   AGE
 pod/instavote-db-postgres-0              1/1     Running   0          18m
 pod/instavote-result-f9b57c5cf-wlcwq     1/1     Running   0          18m
@@ -406,7 +406,8 @@ replicaset.apps/worker-deployment-6d5dc55fbb   1         1         1       18m
 
 NAME                                     READY   AGE
 statefulset.apps/instavote-db-postgres   1/1     18m
-luis@lfarizav:~/flux-k8s-deploy-lab$ k get all -n facebooc
+
+luis@lfarizav:~/facebooc-deploy$ k get all -n facebooc
 NAME                            READY   STATUS    RESTARTS   AGE
 pod/facebooc-648478b86d-vnnlf   1/1     Running   0          18m
 
