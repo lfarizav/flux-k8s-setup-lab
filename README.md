@@ -40,8 +40,9 @@ In this lab we use Facebooc and Instavote applications running on facebooc and i
 7. [Bootstrap Flux](#-bootstrap-flux)
 8. [Check Flux resources](#-check-flux-resources)
 9. [Repo Structure](#-repo-structure)  
-10. [Create a new tenant](#-create-a-new-tenant)  
-11. [Next Steps](#-next-steps)
+10. [Create a new tenant](#-create-a-new-tenant)
+11. [Configure alerts with Slack](#-configure-alerts-with-slack)
+12. [Next Steps](#-next-steps)
 
 ---
 
@@ -325,7 +326,13 @@ spec:
 EOF
 ```
 ---
-
+## 🚀 Configure alerts with Slack
+To configure alerts using Slack we need to follow these steps:
+1. Create an Incoming Webhook for Slack
+2. Create a secret for slack's incomming webhook url
+3. Add a Provider to Connect to Slack from Flux
+4. Set Up an Alert to Send Notifications to Slack
+5. Update facebooc-deploy, instavote-deploy or both folders
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
