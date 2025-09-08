@@ -387,7 +387,7 @@ flux export alert-provider slack > slack-provider.yaml
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
 ---
-## Results
+## 🔥 Results
 At the end, you will the applications inside facebooc and instavote namespaces as follows:
 ```bash
 luis@lfarizav:~/facebooc-deploy$ k get ns
