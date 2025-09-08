@@ -267,9 +267,10 @@ k get all -n flux-system
 ## 🗂 Repo Structure
 
 - **flux-k8s-fleet-lab** → Cluster + tenants.  
-- **flux-k8s-deploy-lab** → Tenant manifests.  
-- **flux-k8s-code-lab** → Application code.  
-
+- **instavote-deploy** → Instavote infrastructure.  
+- **facebooc-deploy** → Facebooc infrastructure.  
+- **instavote** → Instavote code.  
+- **facebooc** → Facebooc code.  
 ---
 
 ## 👩‍💻 Create a new tenant
