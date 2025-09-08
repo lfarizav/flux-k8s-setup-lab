@@ -346,7 +346,10 @@ If you do have the appropriate access, create a new channel or use an existing o
 
 ### Create a secret for slack's incomming webhook url
 ```bash
-kubectl create secret -n flux-system generic slack-url --from-literal=address=https://hooks.slack.com/services/xxx/yyy/zzz
+kubectl create secret -n facebooc generic slack-url --from-literal=address=https://hooks.slack.com/services/xxx/yyy/zzz
+kubectl create secret -n instavote generic slack-url --from-literal=address=https://hooks.slack.com/services/xxx/yyy/zzz
+kubectl get secrets -n facebooc
+kubectl get secrets -n instavote
 ```
 ### Add a Provider to Connect to Slack from Flux
 Remember xxxxx must be the same as your Slack channel
@@ -354,11 +357,23 @@ Remember xxxxx must be the same as your Slack channel
 flux create alert-provider slack \
 --type=slack \
 --channel= xxxxx \
---secret-ref=slack-url --export
+--secret-ref=slack-url
+flux get alert-providers
 ```
 ### Set Up an Alert to Send Notifications to Slack
+Now, create an Alert to send notifications to Slack. For this task you will use the provider created above to track the
+changes for the following resources:
+1.  Kustomization/*
+2.  GitRepository/*
+3.  HelmRelease/*
 ```bash
-
+flux create alert slack-notif \
+--provider-ref=slack \
+--event-source=GitRepository/* \
+--event-source=Kustomization/* \
+--event-source=HelmRelease/* \
+--event-severity=info \
+flux get alert
 ```
 ### Update faceboocdeploy, instavotedeploy or both folders
 ```bash
