@@ -43,6 +43,12 @@ In this lab we use Facebooc and Instavote applications running on facebooc and i
 10. [Create a new tenant](#-create-a-new-tenant)
 11. [Configure alerts with Slack](#-configure-alerts-with-slack)
 12. [Next Steps](#-next-steps)
+  - [Create an Incoming Webhook for Slack](#create-an-incoming-webhook)
+  - [Create a secret for slacks incomming webhook url](#create-a-secret-for-slacks-incomming-webhook-url)
+  - [Add a Provider to Connect to Slack from Flux](#add-a-provider-to-connect-to-slack-from-flux)
+  - [Set Up an Alert to Send Notifications to Slack](#set-up-an-alert-to-send-notifications-to-slack)
+  - [Update facebooc-deploy, instavote-deploy or both folders](#update-faceboocdeploy-instavotedeploy-or-both-folders)
+
 
 ---
 
@@ -350,7 +356,7 @@ To configure alerts using Slack we need to follow these steps:
 ```bash
 
 ```
-### Update facebooc-deploy, instavote-deploy or both folders
+### Update faceboocdeploy, instavotedeploy or both folders
 ```bash
 
 ```
