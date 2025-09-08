@@ -441,4 +441,13 @@ replicaset.apps/facebooc-648478b86d   1         1         1       18m
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
+  1.  Install Tekton pipelines in the Kubernetes cluster
+  ```bash
+  kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+  ```
+  2.  Install Tekton CLI
+  ```bash
+  curl -LO https://github.com/tektoncd/cli/releases/download/v0.42.0/tektoncd-cli-0.42.0_Linux-64bit.deb
+  sudo dpkg -i ./tektoncd-cli-0.42.0_Linux-64bit.deb
+  ```
 ---
