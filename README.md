@@ -48,6 +48,7 @@ In this lab we use Facebooc and Instavote applications running on facebooc and i
     - [Set Up an Alert to Send Notifications to Slack](#set-up-an-alert-to-send-notifications-to-slack)
     - [Update facebooc-deploy, instavote-deploy or both folders](#update-faceboocdeploy-instavotedeploy-or-both-folders)
 12. [Next Steps](#-next-steps)
+13. [Results](#-results)
 
 ---
 
