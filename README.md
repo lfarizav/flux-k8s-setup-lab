@@ -325,9 +325,7 @@ EOF
 
 ## 🚀 Next Steps
 
-- Add multiple tenants.  
-- Apply RBAC for tenant isolation.  
-- Enforce policies with Kyverno or OPA.  
-- Explore HelmReleases for shared services.  
+- Add more tenants.  
+- Play with the applications and use the repositories as template for your next FluxCD automatic deployment
 
 ---
