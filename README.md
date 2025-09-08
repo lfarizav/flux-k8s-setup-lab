@@ -283,7 +283,7 @@ However, if you need to add a new one to dev cluster just use flux as follows:
 ```bash
 flux create tenant <new-tenant-name> --with-namespace=<new-tenant-name> --export > flux-k8s-fleet-lab/projects/base/<new-tenant-name>/rbac.yaml
 ```
-### Add a source tip git for the new repository
+### Add a source tip git for the new repository.
 ```bash
 flux create source git <new-tenant-name>-deploy \
 --namespace=<new-tenant-name> \
@@ -292,7 +292,7 @@ flux create source git <new-tenant-name>-deploy \
 --export >
 flux-k8s-fleet-lab/projects/base/instavote/<new-tenant-name>-deploy-gitrepository.yaml
 ```
-### Add a kustomization for the that tenant
+### Add a kustomization for the that tenant.
 ```bash
 flux create kustomization <new-tenant-name>-deploy \
 --namespace=<new-tenant-name> \
@@ -302,8 +302,10 @@ flux create kustomization <new-tenant-name>-deploy \
 --export >
 flux-k8s-fleet-lab/projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kustomization.yaml
 ```
-### Flux will reconcile and deploy the app automatically.  
-
+### Auto-generate kustomization.yaml. 
+```bash
+kustomize create --autodetect
+```
 ---
 
 ## 🚀 Next Steps
