@@ -346,11 +346,15 @@ If you do have the appropriate access, create a new channel or use an existing o
 
 ### Create a secret for slack's incomming webhook url
 ```bash
-
+kubectl create secret -n flux-system generic slack-url --from-literal=address=https://hooks.slack.com/services/xxx/yyy/zzz
 ```
 ### Add a Provider to Connect to Slack from Flux
+Remember xxxxx must be the same as your Slack channel
 ```bash
-
+flux create alert-provider slack \
+--type=slack \
+--channel= xxxxx \
+--secret-ref=slack-url --export
 ```
 ### Set Up an Alert to Send Notifications to Slack
 ```bash
