@@ -376,9 +376,12 @@ flux create alert slack-notif \
 flux get alert
 ```
 ### Update faceboocdeploy, instavotedeploy or both folders
+Export alert and alert-provider to yaml files
 ```bash
-
+flux export alert slack-notif > slack-notif-alert.yaml
+flux export alert-provider slack > slack-provider.yaml
 ```
+Open slack-notif-alert.yaml and slack-provider.yaml and add the namespace correspondly to facebooc or instavote applications. Then move them to ~/instavote-deploy/flux/base or ~/facebook-deploy/flux/base
 ---
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
