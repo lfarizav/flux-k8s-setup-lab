@@ -314,8 +314,7 @@ cat << EOF tee ./projects/dev/<new-tenant-name>/<new-tenant-name>-deploy-kustomi
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-name: instavote-deploy
-namespace: instavote
+name: <new-tenant-name>-deploy
 spec:
 path: ./flux/dev
 EOF
