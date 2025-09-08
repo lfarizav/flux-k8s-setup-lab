@@ -341,9 +341,9 @@ To configure alerts using Slack we need to follow these steps:
 5. Update facebooc-deploy, instavote-deploy or both folders
 ---
 ### Create an Incoming Webhook for Slack
-```bash
+
 If you do have the appropriate access, create a new channel or use an existing one and browse to the configuration on the top right corner of the channel. Go to Slack marketplace and search for Incomming Webhooks. Then hit the button "add to slack". Then in "Post to Channel" select the channel you are already created. Finally, hit the button "Add Incoming Webhooks Integration" to get the url.
-```
+
 ### Create a secret for slack's incomming webhook url
 ```bash
 
