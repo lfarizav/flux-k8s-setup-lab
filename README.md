@@ -272,14 +272,14 @@ k get all -n flux-system
 
 ---
 
-## 👩‍💻 Create a tenant
+## 👩‍💻 Create a new tenant
 This laboratory has two tenants. They are called facebooc and instavote. 
 ```bash
 flux create tenant facebooc --with-namespace=facebooc --export > flux-k8s-fleet-lab/projects/base/facebooc/rbac.yaml
 flux create tenant instavote --with-namespace=instavote  --export > flux-k8s-fleet-lab/projects/base/instavote/rbac.yaml
 ```
 However, if you need to add a new one to dev cluster just use flux as follows:
-### Create a new tenant
+### Create the tenant
 ```bash
 flux create tenant <new-tenant-name> --with-namespace=<new-tenant-name> --export > flux-k8s-fleet-lab/projects/base/<new-tenant-name>/rbac.yaml
 ```
@@ -291,6 +291,16 @@ flux create source git <new-tenant-name>-deploy \
 --branch=main \
 --export >
 ./projects/base/instavote/<new-tenant-name>-deploy-gitrepository.yaml
+```
+### Add a source tip git for the new repository
+```bash
+flux create kustomization <new-tenant-name>-deploy \
+--namespace=<new-tenant-name> \
+--service-account=<new-tenant-name>\
+--source=GitRepository/<new-tenant-name>-deploy \
+--path="./flux" \
+--export >
+./projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kustomization.yaml
 ```
 ### Flux will reconcile and deploy the app automatically.  
 
