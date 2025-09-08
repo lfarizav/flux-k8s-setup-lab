@@ -307,6 +307,19 @@ flux-k8s-fleet-lab/projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kust
 cd flux-k8s-fleet-lab/projects/base/<new-tenant-name>/
 kustomize create --autodetect
 ```
+### Auto-generate kustomization.yaml in dev cluster. 
+```bash
+cd cd flux-k8s-fleet-lab/
+cat << EOF tee ./projects/dev/<new-tenant-name>/<new-tenant-name>-deploy-kustomization.yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+name: instavote-deploy
+namespace: instavote
+spec:
+path: ./flux/dev
+EOF
+```
 ---
 
 ## 🚀 Next Steps
