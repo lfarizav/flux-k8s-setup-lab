@@ -450,4 +450,5 @@ replicaset.apps/facebooc-648478b86d   1         1         1       18m
   curl -LO https://github.com/tektoncd/cli/releases/download/v0.42.0/tektoncd-cli-0.42.0_Linux-64bit.deb
   sudo dpkg -i ./tektoncd-cli-0.42.0_Linux-64bit.deb
   ```
+  3.  Create a Pipeline and a PipelineRun with task fetch-repo with git-clone tekton application, build-image using kaniko application and finnaly publish that image to a repository like Dockerhub.
 ---
