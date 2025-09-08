@@ -47,8 +47,8 @@ In this lab we use Facebooc and Instavote applications running on facebooc and i
     - [Add a Provider to Connect to Slack from Flux](#add-a-provider-to-connect-to-slack-from-flux)
     - [Set Up an Alert to Send Notifications to Slack](#set-up-an-alert-to-send-notifications-to-slack)
     - [Update facebooc-deploy, instavote-deploy or both folders](#update-faceboocdeploy-instavotedeploy-or-both-folders)
-12. [Next Steps](#-next-steps)
-13. [Results](#-results)
+12. [Results](#-results)
+13. [Next Steps](#-next-steps)
 
 ---
 
@@ -383,10 +383,6 @@ flux export alert slack-notif > slack-notif-alert.yaml
 flux export alert-provider slack > slack-provider.yaml
 ```
 ---
-## 🚀 Next Steps 
-- Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
-- Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
----
 ## 🔥 Results
 At the end, you will the applications inside facebooc and instavote namespaces as follows:
 ```bash
@@ -442,3 +438,7 @@ deployment.apps/facebooc   1/1     1            1           18m
 NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/facebooc-648478b86d   1         1         1       18m
 ```
+## 🚀 Next Steps 
+- Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
+- Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
+---
