@@ -52,7 +52,7 @@ We will:
 - Create a Kubernetes cluster.  
 - Enable multi-networking with Multus CNI.  
 - Bootstrap FluxCD with Git repositories.  
-- Deploy applications in **isolated tenant namespaces**.  
+- Deploy Facebooc and Instavote applications in **isolated tenant namespaces**.  
 
 ---
 ## ✅ Install Requirements
