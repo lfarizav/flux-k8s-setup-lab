@@ -77,8 +77,10 @@ sudo visudo
 - Ubuntu 22.04 (Intel architecture).  
 - 4 CPUs, 8 GB RAM (minimum).  
 - GitHub account with 3 repositories:
-  - `flux-k8s-code-lab` → Application source code.  
-  - `flux-k8s-deploy-lab` → Tenant deployment configs.  
+  - `facebooc` → Facebooc application source code.
+  - `Instavote` → Instavote application source code.  
+  - `facebook-deploy` → Facebooc tenant deployment configs.
+  - `instavote-deploy` → Instavote tenant deployment configs.  
   - `flux-k8s-fleet-lab` → Fleet/platform configurations.  
 
 ---
