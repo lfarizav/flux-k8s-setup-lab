@@ -333,6 +333,28 @@ To configure alerts using Slack we need to follow these steps:
 3. Add a Provider to Connect to Slack from Flux
 4. Set Up an Alert to Send Notifications to Slack
 5. Update facebooc-deploy, instavote-deploy or both folders
+---
+### Create an Incoming Webhook for Slack
+```bash
+
+```
+### Create a secret for slack's incomming webhook url
+```bash
+
+```
+### Add a Provider to Connect to Slack from Flux
+```bash
+
+```
+### Set Up an Alert to Send Notifications to Slack
+```bash
+
+```
+### Update facebooc-deploy, instavote-deploy or both folders
+```bash
+
+```
+---
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
