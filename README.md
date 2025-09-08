@@ -290,9 +290,9 @@ flux create source git <new-tenant-name>-deploy \
 --url=https://github.com/dopsdemo/<new-tenant-name>-deploy \
 --branch=main \
 --export >
-./projects/base/instavote/<new-tenant-name>-deploy-gitrepository.yaml
+flux-k8s-fleet-lab/projects/base/instavote/<new-tenant-name>-deploy-gitrepository.yaml
 ```
-### Add a source tip git for the new repository
+### Add a kustomization for the that tenant
 ```bash
 flux create kustomization <new-tenant-name>-deploy \
 --namespace=<new-tenant-name> \
@@ -300,7 +300,7 @@ flux create kustomization <new-tenant-name>-deploy \
 --source=GitRepository/<new-tenant-name>-deploy \
 --path="./flux" \
 --export >
-./projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kustomization.yaml
+flux-k8s-fleet-lab/projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kustomization.yaml
 ```
 ### Flux will reconcile and deploy the app automatically.  
 
