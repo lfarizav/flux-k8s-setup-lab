@@ -274,12 +274,12 @@ k get all -n flux-system
 ---
 
 ## 👩‍💻 Create a new tenant
-This laboratory has two tenants. They are called facebooc and instavote. 
+This laboratory has two tenants. They are called Facebooc and Instavote. 
 ```bash
 flux create tenant facebooc --with-namespace=facebooc --export > flux-k8s-fleet-lab/projects/base/facebooc/rbac.yaml
 flux create tenant instavote --with-namespace=instavote  --export > flux-k8s-fleet-lab/projects/base/instavote/rbac.yaml
 ```
-However, if you need to add a new one to dev cluster just use flux as follows:
+However, if you need to add a new tenant to the dev cluster just use FluxCD as follows:
 ### Create the tenant
 ```bash
 flux create tenant <new-tenant-name> --with-namespace=<new-tenant-name> --export > flux-k8s-fleet-lab/projects/base/<new-tenant-name>/rbac.yaml
@@ -323,9 +323,7 @@ EOF
 ```
 ---
 
-## 🚀 Next Steps
-
-- Add more tenants.  
-- Play with the applications and use the repositories as template for your next FluxCD automatic deployment
-
+## 🚀 Next Steps 
+- Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
+- Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
 ---
