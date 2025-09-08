@@ -304,6 +304,7 @@ flux-k8s-fleet-lab/projects/base/<new-tenant-name>/<new-tenant-name>-deploy-kust
 ```
 ### Auto-generate kustomization.yaml. 
 ```bash
+cd flux-k8s-fleet-lab/projects/base/<new-tenant-name>/
 kustomize create --autodetect
 ```
 ---
