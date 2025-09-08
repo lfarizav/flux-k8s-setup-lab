@@ -20,6 +20,7 @@ emails: lfarizav@gmail.com, lfarizav@unal.edu.co
 
 This repository contains step-by-step instructions to set up a **FluxCD GitOps environment** on a local **Kubernetes cluster using Kind**.  
 The lab is designed for teaching **multitenancy**, where each team (tenant) has its own namespace, RBAC rules, and GitOps configuration.
+In this lab we use Facebooc and Instavote applications running on facebooc and instavote namespaces.
 
 ---
 
