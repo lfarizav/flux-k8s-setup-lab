@@ -126,6 +126,7 @@ sudo apt-get update
 Install docker packages
 ```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+docker --version
 ```
 Add user to Docker group:
 ```bash
@@ -189,6 +190,7 @@ helm version
 Go to the webpage https://fluxcd.io/flux/installation/ and follow the steps
 ```bash
 curl -s https://fluxcd.io/install.sh | sudo bash
+flux --version
 ```
 ---
 
