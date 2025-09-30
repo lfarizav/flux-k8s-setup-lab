@@ -248,7 +248,6 @@ flux check
 #After installing fluxcd is important to set GITHUB_TOKEN and GITHUB_USER environment variables. The following are the env for helm_open5gs github repository
 export GITHUB_TOKEN=<github-token>
 export GITHUB_USER=<github-user>
-echo $GITHUB_TOKEN
 echo $GITHUB_USER
 ```
 ---
