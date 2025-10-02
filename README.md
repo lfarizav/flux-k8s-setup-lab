@@ -46,7 +46,8 @@ The lab is designed for teaching **multitenancy** in the virtual event of the Fu
     - [Set Up an Alert to Send Notifications to Slack](#set-up-an-alert-to-send-notifications-to-slack)
     - [Update facebooc-deploy, instavote-deploy or both folders](#update-faceboocdeploy-instavotedeploy-or-both-folders)
 11. [Results](#-results)
-12. [Next Steps](#-next-steps)
+12. [Expose kubernetes endpoints](#-expose-kubernetes-endpoints)
+13. [Next Steps](#-next-steps)
 
 ---
 
@@ -408,6 +409,17 @@ deployment.apps/facebooc   1/1     1            1           18m
 NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/facebooc-648478b86d   1         1         1       18m
 ```
+## 🚀 Expose Kubernetes endpoints
+
+  1. 🌐 Expose vote and facebooc Services on the Internet
+  This guide explains how to expose your Kubernetes services using Cloudflare Tunnels, making them accessible via vote.beanters.com and facebooc.beanters.com.
+  3. Add DNS Records in Cloudflare
+  4. Configure Tunnel Ingress
+  5. Add Credentials as Kubernetes Secrets
+  6. Create ConfigMaps in Kubernetes
+  7. Deploy Cloudflared Tunnels
+  8. Create Ingress (Optional for vote)
+  9. Test Access
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
