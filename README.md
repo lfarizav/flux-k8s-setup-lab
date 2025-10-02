@@ -435,7 +435,18 @@ The following steps are the same to expose both vote and facebooc services on th
   Target: <FACEBOOC_TUNNEL_ID>.cfargotunnel.com
   Proxy: ON
   ```
-  5. Configure Tunnel Ingress
+  3. Configure Tunnel Ingress
+  - vote tunnel configuration
+  - Create cloudflare/vote-config.yaml:
+  ```
+tunnel: <VOTE_TUNNEL_ID>
+credentials-file: /etc/cloudflared/creds/credentials.json
+
+ingress:
+  - hostname: vote.beanters.com
+    service: http://vote.instavote.svc.cluster.local:80
+  - service: http_status:404
+  ```
   6. Add Credentials as Kubernetes Secrets
   7. Create ConfigMaps in Kubernetes
   8. Deploy Cloudflared Tunnels
