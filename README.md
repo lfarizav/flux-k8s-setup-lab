@@ -410,9 +410,9 @@ NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/facebooc-648478b86d   1         1         1       18m
 ```
 ## 🚀 Expose Kubernetes endpoints
-
+The following steps are the same to expose both vote and facebooc services on the Internet using Cloudflare Tunnels:
   1. 🌐 Expose vote and facebooc Services on the Internet
-  This guide explains how to expose your Kubernetes services using Cloudflare Tunnels, making them accessible via vote.beanters.com and facebooc.beanters.com.
+  - This guide explains how to expose your Kubernetes services using Cloudflare Tunnels, making them accessible via vote.beanters.com and facebooc.beanters.com.
   3. Add DNS Records in Cloudflare
   4. Configure Tunnel Ingress
   5. Add Credentials as Kubernetes Secrets
