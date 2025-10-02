@@ -470,10 +470,195 @@ The following steps are the same to expose both vote and facebooc services on th
   --from-file=credentials.json=<FACEBOOC_TUNNEL_ID>.json \
   -n facebooc
   ```
-  8. Create ConfigMaps in Kubernetes
-  9. Deploy Cloudflared Tunnels
-  10. Create Ingress (Optional for vote)
-  11. Test Access
+  5. Create ConfigMaps in Kubernetes
+  - For vote tunnel:
+  ```
+  kubectl create configmap vote-tunnel-config \
+  --from-file=config.yaml=cloudflare/vote-config.yaml \
+  -n instavote
+  ```
+  - For facebooc tunnel:
+  ```
+  kubectl create configmap facebooc-tunnel-config \
+  --from-file=config.yaml=cloudflare/facebooc-config.yaml \
+  -n facebooc
+  ```
+  6. Deploy Cloudflared Tunnels
+  - vote Deployment
+  ```
+  # cloudflared-deployment.yaml - CORRECTED AGAIN
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared-deployment
+  namespace: instavote
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared
+  template:
+    metadata:
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+        # Use 'cloudflared tunnel run <tunnel-name> --config <config-path>'
+        # This is the standard way to run a named tunnel with a config file
+        - tunnel
+        - --config
+        - /etc/cloudflared/config.yaml # Points to the mounted ConfigMap
+#        - --protocol
+#        - http2
+        - run
+        - vote-tunnel # <--- IMPORTANT: Replace 'vote-tunnel' with YOUR ACTUAL TUNNEL NAME if different
+        env:
+        # TUNNEL_ID env var is not strictly necessary when running with `run <tunnel-name>` and --config
+        # but doesn't hurt. You might keep it for reference or remove it.
+        - name: TUNNEL_ID
+          value: d7eeb676-5b92-40dc-9352-9d33adf501711 # Your actual TUNNEL_ID
+        volumeMounts:
+        # Mount the ConfigMap as a file named config.yaml
+        - name: config
+          mountPath: /etc/cloudflared/config.yaml
+          subPath: config.yaml
+          readOnly: true
+        # Mount the Secret as a file named credentials.json
+        - name: creds
+          mountPath: /etc/cloudflared/credentials.json # Full path to the file
+          subPath: credentials.json # Name of the file within the mount path
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: tunnel-config # Name of the ConfigMap you created (from Step 5)
+      - name: creds
+        secret:
+          secretName: tunnel-credentials # Name of the Secret you created (from Step 3)
+          items: # Explicitly specify the key and path for the file
+            - key: credentials.json
+              path: credentials.json
+  ```
+  - facebooc Deployment
+  ```
+  # cloudflared-deployment.yaml - CORRECTED AGAIN
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared-deployment
+  namespace: facebooc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared-facebooc
+  template:
+    metadata:
+      labels:
+        app: cloudflared-facebooc
+    spec:
+      containers:
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
+        args:
+        # Use 'cloudflared tunnel run <tunnel-name> --config <config-path>'
+        # This is the standard way to run a named tunnel with a config file
+        - tunnel
+        - --config
+        - /etc/cloudflared/config.yaml # Points to the mounted ConfigMap
+#        - --protocol
+#        - http2
+        - run
+        - facebooc # <--- IMPORTANT: Replace 'facebooc' with YOUR ACTUAL TUNNEL NAME if different
+        env:
+        # TUNNEL_ID env var is not strictly necessary when running with `run <tunnel-name>` and --config
+        # but doesn't hurt. You might keep it for reference or remove it.
+        - name: TUNNEL_ID
+          value: 6be42249-b925-4dc3-9edf-6141a0424022 # Your actual TUNNEL_ID
+        volumeMounts:
+        # Mount the ConfigMap as a file named config.yaml
+        - name: facebooc-config
+          mountPath: /etc/cloudflared/config.yaml
+          subPath: config.yaml
+          readOnly: true
+        # Mount the Secret as a file named credentials.json
+        - name: creds
+          mountPath: /etc/cloudflared/credentials.json # Full path to the file
+          subPath: credentials.json # Name of the file within the mount path
+          readOnly: true
+      volumes:
+      - name: facebooc-config
+        configMap:
+          name: facebooc-tunnel-config # Name of the ConfigMap you created (from Step 5)
+      - name: creds
+        secret:
+          secretName: facebooc-tunnel-credentials # Name of the Secret you created (from Step 3)
+          items: # Explicitly specify the key and path for the file
+            - key: credentials.json
+              path: credentials.json
+  ```
+  - Apply both:
+  ```
+  kubectl apply -f cloudflared-vote-deploy.yaml
+  kubectl apply -f cloudflared-facebooc-deploy.yaml
+  ```
+  7. Create Ingress (Optional for vote)
+  - If you want NGINX Ingress to handle HTTP routing for vote:
+  ```
+  apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vote-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "vote.beanters.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: vote
+            port:
+              number: 80
+  ```
+  - If you want NGINX Ingress to handle HTTP routing for facebooc:
+  ```
+  apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: facebooc-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "facebooc.beanters.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: facebooc
+            port:
+              number: 16000
+  ```
+  8. Test Access
+  - vote:
+  ```
+  curl http://vote.beanters.com
+  ```
+  - facebooc:
+  ```
+  curl http://facebooc.beanters.com
+  ```
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
