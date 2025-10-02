@@ -46,7 +46,7 @@ The lab is designed for teaching **multitenancy** in the virtual event of the Fu
     - [Set Up an Alert to Send Notifications to Slack](#set-up-an-alert-to-send-notifications-to-slack)
     - [Update facebooc-deploy, instavote-deploy or both folders](#update-faceboocdeploy-instavotedeploy-or-both-folders)
 11. [Results](#-results)
-12. [Expose kubernetes endpoints](#-expose-kubernetes-endpoints)
+12. [Expose kubernetes endpoints on internet](#-expose-kubernetes-endpoints-on-internet)
 13. [Next Steps](#-next-steps)
 
 ---
@@ -409,10 +409,16 @@ deployment.apps/facebooc   1/1     1            1           18m
 NAME                                  DESIRED   CURRENT   READY   AGE
 replicaset.apps/facebooc-648478b86d   1         1         1       18m
 ```
-## 🚀 Expose Kubernetes endpoints
+## 🚀 Expose Kubernetes endpoints on internet
 The following steps are the same to expose both vote and facebooc services on the Internet using Cloudflare Tunnels:
   1. 🌐 Expose vote and facebooc Services on the Internet
   - This guide explains how to expose your Kubernetes services using Cloudflare Tunnels, making them accessible via vote.beanters.com and facebooc.beanters.com.
+  - Create a CloudFlare tunnel
+  cloudflared tunnel create vote
+  ```
+  cloudflared tunnel create vote
+  cloudflared tunnel create facebooc
+  ```
   3. Add DNS Records in Cloudflare
   4. Configure Tunnel Ingress
   5. Add Credentials as Kubernetes Secrets
