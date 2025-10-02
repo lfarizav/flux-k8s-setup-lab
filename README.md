@@ -439,19 +439,41 @@ The following steps are the same to expose both vote and facebooc services on th
   - vote tunnel configuration
   - Create cloudflare/vote-config.yaml:
   ```
-tunnel: <VOTE_TUNNEL_ID>
-credentials-file: /etc/cloudflared/creds/credentials.json
-
-ingress:
-  - hostname: vote.beanters.com
-    service: http://vote.instavote.svc.cluster.local:80
-  - service: http_status:404
+  tunnel: <VOTE_TUNNEL_ID>
+  credentials-file: /etc/cloudflared/creds/credentials.json
+  ingress:
+    - hostname: vote.beanters.com
+      service: http://vote.instavote.svc.cluster.local:80
+    - service: http_status:404
   ```
-  6. Add Credentials as Kubernetes Secrets
-  7. Create ConfigMaps in Kubernetes
-  8. Deploy Cloudflared Tunnels
-  9. Create Ingress (Optional for vote)
-  10. Test Access
+  - facebooc tunnel configuration
+  - Create cloudflare/facebooc-config.yaml:
+  ```
+  tunnel: <FACEBOOC_TUNNEL_ID>
+  credentials-file: /etc/cloudflared/creds/credentials.json
+  ingress:
+    - hostname: facebooc.beanters.com
+      service: http://facebooc.facebooc.svc.cluster.local:1600
+    - service: http_status:404
+  ```
+  4. Add Credentials as Kubernetes Secrets
+  - Add Credentials as Kubernetes Secrets
+  - For vote tunnel:
+  ```
+  kubectl create secret generic vote-tunnel-credentials \
+  --from-file=credentials.json=<VOTE_TUNNEL_ID>.json \
+  -n instavote
+  ```
+  - For facebooc tunnel:
+  ```
+  kubectl create secret generic facebooc-tunnel-credentials \
+  --from-file=credentials.json=<FACEBOOC_TUNNEL_ID>.json \
+  -n facebooc
+  ```
+  8. Create ConfigMaps in Kubernetes
+  9. Deploy Cloudflared Tunnels
+  10. Create Ingress (Optional for vote)
+  11. Test Access
 ## 🚀 Next Steps 
 - Play with the applications and use the repositories as templates for your next FluxCD automatic deployment
 - Connect Tekton CI with Flux CD so one your push or merge is authorized from devops team, it is automatically reconciled with kubernetes
